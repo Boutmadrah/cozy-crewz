@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuzy Crewz — Streetwear & Comfort</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <div class="cart-title">السلة 🛒</div>
+    <button class="cart-close" onclick="closeCart()">✖</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <span style="font-size:2.5rem">🛒</span>
+      <span>السلة فاضية — ابدأ تتسوق!</span>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">الإجمالي</span>
+      <span class="cart-total-val"><span id="cartTotal">0</span> EGP</span>
+    </div>
+    <button class="btn-order" onclick="openOrderModal()">📦 إتمام الطلب</button>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">إتمام الطلب</div>
+      <button class="modal-close" onclick="closeOrderModal()">✖</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary">
+        <div class="order-summary-title">ملخص الطلب</div>
+        <div id="orderSummaryItems"></div>
+        <div class="order-summary-item">
+          <span>الإجمالي</span>
+          <span id="orderSummaryTotal">0 EGP</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-group">
+        <label class="form-label">الاسم الكامل *</label>
+        <input type="text" class="form-input" id="custName" placeholder="اسمك هنا...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">رقم الموبايل *</label>
+        <input type="tel" class="form-input" id="custPhone" placeholder="01xxxxxxxxx" dir="ltr">
+      </div>
+      <div class="form-group">
+        <label class="form-label">المحافظة *</label>
+        <select class="form-select" id="custGov">
+          <option value="">اختر المحافظة...</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+          <option>الشرقية</option><option>الدقهلية</option><option>البحيرة</option>
+          <option>المنوفية</option><option>الغربية</option><option>القليوبية</option>
+          <option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option>
+          <option>الإسماعيلية</option><option>السويس</option><option>شمال سيناء</option>
+          <option>جنوب سيناء</option><option>الفيوم</option><option>بني سويف</option>
+          <option>المنيا</option><option>أسيوط</option><option>سوهاج</option>
+          <option>قنا</option><option>الأقصر</option><option>أسوان</option>
+          <option>البحر الأحمر</option><option>مطروح</option><option>الوادي الجديد</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">العنوان بالتفصيل *</label>
+        <input type="text" class="form-input" id="custAddress" placeholder="الشارع، الحي، المدينة...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">ملاحظات (اختياري)</label>
+        <input type="text" class="form-input" id="custNotes" placeholder="أي ملاحظة على الطلب...">
+      </div>
+
+      <div class="form-notes">
+        <strong>📍 الشحن والتوصيل:</strong> التوصيل لكل محافظات مصر خلال 3-5 أيام عمل.<br>
+        <strong>💳 الدفع:</strong> الدفع عند الاستلام (كاش).<br>
+        <strong>📧 التواصل:</strong> هيتوصل معاك فريقنا على رقم موبايلك لتأكيد الطلب.
+      </div>
+
+      <button class="whatsapp-btn" onclick="submitOrder()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        أرسل الطلب على واتساب
+      </button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✔</div>
+      <div class="success-title">تم إرسال الطلب!</div>
+      <p class="success-desc">تم تحويلك لواتساب لإتمام الطلب مع فريق Cuzy Crewz. هيوصلك معانا قريبا لتأكيد الأوردر والتوصيل.</p>
+      <button class="btn-primary" onclick="closeOrderModal()" style="margin-top:0.5rem">تمام 👍</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">CUZY <span>CREWZ</span></a>
+  <ul class="nav-links">
+    <li><a href="#categories">Collections</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#story">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#order" class="nav-cta">اطلب دلوأتي</a></li>
+  </ul>
+  <button class="cart-btn" onclick="openCart()">
+    🛒 السلة
+    <span class="cart-count" id="cartCountBadge">0</span>
+  </button>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>FREE SHIPPING ON ORDERS OVER 500 EGP</span><span>NEW COLLECTION EST. 2024</span>
+    <span>OWN YOUR STYLE</span><span>EMBRACE YOUR COMFORT</span><span>STREETWEAR & COMFORT</span>
+    <span>شحن مجاني على الطلبات فوق 500 جنيه</span>
+    <span>FREE SHIPPING ON ORDERS OVER 500 EGP</span><span>NEW COLLECTION EST. 2024</span>
+    <span>OWN YOUR STYLE</span><span>EMBRACE YOUR COMFORT</span><span>STREETWEAR & COMFORT</span>
+    <span>شحن مجاني على الطلبات فوق 500 جنيه</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Streetwear & Comfort — EST. 2024</p>
+      <h1 class="hero-title">OWN<br>YOUR <span class="accent">STYLE</span></h1>
+      <p class="hero-sub">مظهر مريح وعصري لكل الفئات — من السترِيت وير اليو مي للـ oversized الكول. الـ Cuzy Crewz بتقدم لك ستايل حقيقى بجودة عالية.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">تسوق دلوأتي</a>
+        <a href="#story" class="btn-ghost">اعرف اكثر</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge-ring">
+        <div class="ring-dot"></div><div class="ring-dot"></div>
+        <div class="ring-dot"></div><div class="ring-dot"></div>
+        <div class="hero-badge-inner">
+          <div class="badge-logo"><span class="r">C</span>UZY<br><span class="r">C</span>REWZ</div>
+          <div class="badge-sub-text">Streetwear & Comfort</div>
+          <div class="badge-year">EST. 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-ticker">
+  <div class="ticker">
+    <span>T-SHIRTS</span><span>HOODIES</span><span>SWEATPANTS</span><span>SETS</span>
+    <span>OVERSIZED</span><span>COMFORT FIT</span><span>STREETWEAR</span><span>ALL SIZES</span>
+    <span>T-SHIRTS</span><span>HOODIES</span><span>SWEATPANTS</span><span>SETS</span>
+    <span>OVERSIZED</span><span>COMFORT FIT</span><span>STREETWEAR</span><span>ALL SIZES</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-max">
+    <div class="cats-header">
+      <div>
+        <span class="section-label">Browse by Category</span>
+        <h2 class="section-title">الكولكشن</h2>
+      </div>
+      <a href="#products" class="btn-ghost" style="font-size:0.78rem;padding:0.6rem 1.4rem;">عرض الكل</a>
+    </div>
+    <div class="cats-grid">
+      <div class="cat-card" onclick="filterProducts('T-Shirts')">
+        <div class="cat-visual cat-tshirt"> <img src="1S (2).png" alt="T-Shirt" width="300" height="200"> </div>
+        <div class="cat-info"><div class="cat-name">T-SHIRTS</div><div class="cat-count">12 منتج</div></div>
+      </div>
+      <div class="cat-card" onclick="filterProducts('T-Shirts')">
+        <div class="cat-visual cat-tshirt"> <img src="1S (4).png" alt="T-Shirt" width="300" height="200"> </div>
+        <div class="cat-info"><div class="cat-name">T-SHIRTS</div><div class="cat-count">10 منتجات</div></div>
+      </div>
+      <div class="cat-card" onclick="filterProducts('Pants')">
+        <div class="cat-visual cat-pants"> <img src="1S (1).png" alt="Sweatpants" width="300" height="200"> </div>
+        <div class="cat-info"><div class="cat-name">SWEATPANTS</div><div class="cat-count">10 منتجات</div></div>
+      </div>
+      <div class="cat-card" onclick="filterProducts('Pants')">
+        <div class="cat-visual cat-pants"> <img src="1S (3).png" alt="Sweatpants" width="300" height="200"> </div>
+        <div class="cat-info"><div class="cat-name">SWEATPANTS</div><div class="cat-count">8 منتجات</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-max">
+    <div class="products-header">
+      <div>
+        <span class="section-label">New Arrivals</span>
+        <h2 class="section-title">أحدث المنتجات</h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="tab active" onclick="filterProducts('الكل',this)">الكل</button>
+        <button class="tab" onclick="filterProducts('T-Shirts',this)">T-Shirts</button>
+       <button class="tab" onclick="filterProducts('Pants',this)">Pants</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-max">
+    <div class="story-grid">
+      <div class="story-visual">
+        <div class="story-box">
+          <div class="story-logo-big"><span class="r">C</span>UZY<br><span class="r">C</span>REWZ</div>
+          <div class="story-est">STREETWEAR & COMFORT · EST. 2026</div>
+          <div class="stats-row">
+            <div class="stat-cell"><div class="stat-num">500+</div><div class="stat-lbl">عملاء راضيين</div></div>
+            <div class="stat-cell"><div class="stat-num">35+</div><div class="stat-lbl">منتج</div></div>
+            <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-lbl">جودة عالية</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="story-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">عن<br>CUZY CREWZ</h2>
+        <p class="story-para">Cuzy Crewz اتولدت من فكرة بسيطة — إن الملابس المريحة ممكن تكون cool في نفس الوقت. إحنا مش بنبيع لبس بس، إحنا بنبيع ستايل يعبّر شخصيتك.</p>
+        <p class="story-para">كل قطعة مصممة لكل الفئات — من الشباب اللي بيحب الستريت وير للي بيدور على الراحة اليو مية بالمساحة العصرية.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pillar-icon">✔</div><div class="pillar-label">جودة ممتازة مبنية للمناخ المصري</div></div>
+          <div class="pillar"><div class="pillar-icon">✔</div><div class="pillar-label">تصاميم أصلية — مش مودل عن واحد تاني</div></div>
+          <div class="pillar"><div class="pillar-icon">✔</div><div class="pillar-label">مقاسات متنوّعة تناسب كل الأجسام</div></div>
+          <div class="pillar"><div class="pillar-icon">✔</div><div class="pillar-label">توصيل لكل محافظات مصر</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-max">
+    <span class="section-label">Customer Reviews</span>
+    <h2 class="section-title">العملاء قالوا إيه</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">الهوديي جودته ممتازة وراحته لا تتوصف! التصميم أكتر من رائع وجاب تفاعلات كتير من أصحابي.</p>
+        <div class="reviewer"><div class="reviewer-avatar">أح</div><div><div class="reviewer-name">أحمد محمود</div><div class="reviewer-loc">القاهرة</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">اشتريت السويت بانت وكان حاسس حاجة استرحتها. القماش ناعم جداً والـ fit فعلاً بالطبط.</p>
+        <div class="reviewer"><div class="reviewer-avatar">سم</div><div><div class="reviewer-name">سارة مصطفى</div><div class="reviewer-loc">الإسكندرية</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">التيشيرت الكلاسيك حلو جدا والقطع مريحة. خديت المقاس الصح من اول مرة من دليل المقاسات.</p>
+        <div class="reviewer"><div class="reviewer-avatar">عم</div><div><div class="reviewer-name">عمر حسن</div><div class="reviewer-loc">الجيزة</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner">
+    <h2 class="newsletter-title">STAY IN THE CREWZ</h2>
+    <p class="newsletter-desc">اشترك في النيوزليتر وكن أول من يعرف بالكولكشن الجديدة والعروض الخاصة.</p>
+    <div class="newsletter-form">
+      <input type="email" id="newsletterEmail" placeholder="ايميلك هنا..." dir="ltr">
+      <button class="btn-white" id="newsletterBtn" onclick="subscribeNewsletter()">اشترك</button>
+    </div>
+    <div id="newsletterMsg" style="margin-top:1rem;font-family:'Cairo',sans-serif;font-size:0.92rem;min-height:1.4em;"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="f-logo">CUZY <span>CREWZ</span></div>
+      <p>مظهر مريح وعصري لكل الفئات. صُممت في مصر لتناسب روح الشارع المصري.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">tt</a>
+        <a href="https://wa.me/201145589480" target="_blank" class="social-btn">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul><li><a href="#products">T-Shirts</a></li><li><a href="#products">Hoodies</a></li><li><a href="#products">Sweatpants</a></li><li><a href="#products">Sets</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul><li><a href="#story">عن البراند</a></li><li><a href="https://www.cuzycrewz.com/size-guide" target="_blank">دليل المقاسات</a></li><li><a href="https://www.cuzycrewz.com/return-policy" target="_blank">سياسة الارجاع</a></li><li><a href="https://www.cuzycrewz.com/shipping-and-delivery" target="_blank">الشحن والتوصيل</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/201145589480" target="_blank">واتساب: 01145589480</a></li>
+        <li><a href="https://www.instagram.com/cuzycrewz?igsh=b212c285cnhreGx6">انستجرام</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61590478921418">فيسبوك</a></li>
+        <li><a href="https://www.tiktok.com/@cuzy.crewz?_r=1&_t=ZS-97D43m0mesS">تيك توك</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Cuzy Crewz. All rights reserved.</p>
+    <p>OWN YOUR STYLE. EMBRACE YOUR COMFORT.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
