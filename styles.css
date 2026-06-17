@@ -1,3 +1,17 @@
+/* السطر ده بيجبر كل عناصر الموقع تحسب مقاسها جوه حدودها من غير ما تفرش برة */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* منع السكرول العرضي نهائياً على مستوى الصفحة كلها */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important; /* علامة important بتجبر المتصفح ينفذ الأمر ويلغي أي كود تاني يعارضه */
+    position: relative;
+}
 :root {
   /* palette */
   --crimson: #8B0032;
@@ -17,6 +31,10 @@
   margin: 0;
   padding: 0;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -24,7 +42,9 @@ body {
   background: var(--dark-bg);
   color: var(--cream);
   font-family: 'Inter', 'Cairo', sans-serif;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  margin: 0 auto;
 }
 a {
   color: inherit;
@@ -125,6 +145,7 @@ nav {
 
 /* TICKER */
 .ticker-wrap {
+  width: 100%;
   margin-top: 72px;
   background: var(--crimson);
   overflow: hidden;
@@ -474,13 +495,20 @@ section {
   transform: translateY(-4px);
 }
 .product-img {
-  height: 220px;
+  width: 100%;        /* عرض كامل الـ card */
+  aspect-ratio: 16/9; /* نسبة 1920×1080 */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 5rem;
   position: relative;
   overflow: hidden;
+}
+
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تملأ الحاوية بدون تشويه */
 }
 .product-img::after {
   content: '';

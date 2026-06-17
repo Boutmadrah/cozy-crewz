@@ -1,0 +1,137 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; }
+  .brand-red { color: #8B0033; }
+  .hero { text-align: center; padding: 2rem 1rem 1.5rem; border-bottom: 2px solid #8B0033; }
+  .logo-circle { width: 90px; height: 90px; border-radius: 50%; background: #1A1A1A; border: 3px solid #8B0033; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 22px; font-weight: 900; color: #8B0033; letter-spacing: 1px; }
+  .brand-name { font-size: 2rem; font-weight: 900; color: #8B0033; letter-spacing: 3px; }
+  .brand-sub { font-size: 1rem; color: var(--color-text-secondary); margin-top: 4px; }
+  .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--color-border-tertiary); margin: 1.5rem 0 0; }
+  .tab { flex: 1; padding: 10px 8px; text-align: center; font-size: 13px; font-weight: 500; cursor: pointer; border-bottom: 3px solid transparent; color: var(--color-text-secondary); transition: all 0.2s; }
+  .tab.active { color: #8B0033; border-bottom-color: #8B0033; }
+  .tab:hover { color: #8B0033; }
+  .panel { display: none; padding: 1.5rem 0; }
+  .panel.active { display: block; }
+  .size-table { width: 100%; border-collapse: collapse; font-size: 13px; direction: rtl; }
+  .size-table th { background: #8B0033; color: #fff; padding: 10px 8px; text-align: center; font-size: 13px; font-weight: 700; }
+  .size-table th:first-child { text-align: right; border-radius: 0; }
+  .size-table td { padding: 9px 8px; text-align: center; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .size-table td:first-child { text-align: right; font-weight: 600; color: #8B0033; background: var(--color-background-secondary); font-size: 12px; }
+  .size-table tr:nth-child(even) td { background: var(--color-background-secondary); }
+  .size-table tr:nth-child(even) td:first-child { background: var(--color-background-secondary); }
+  .size-table tr:nth-child(odd) td { background: var(--color-background-primary); }
+  .size-table tr:nth-child(odd) td:first-child { background: var(--color-background-secondary); }
+  .size-table tr:hover td { background: #fff0f4; }
+  .measure-section { background: var(--color-background-secondary); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; direction: rtl; }
+  .measure-title { font-size: 14px; font-weight: 700; color: #8B0033; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .measure-item { font-size: 13px; color: var(--color-text-primary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; gap: 8px; align-items: flex-start; }
+  .measure-item:last-child { border-bottom: none; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #8B0033; flex-shrink: 0; margin-top: 5px; }
+  .note { background: #fff5f7; border-right: 3px solid #8B0033; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 1.5rem; font-size: 12px; color: var(--color-text-secondary); direction: rtl; }
+  .note strong { color: #8B0033; }
+  .section-note { font-size: 12px; color: var(--color-text-secondary); text-align: right; margin-bottom: 10px; direction: rtl; }
+</style>
+
+<h2 class="sr-only">Cuzy Crewz Size Guide — دليل مقاسات S إلى XXXL</h2>
+
+<div class="hero">
+  <div class="logo-circle">CC</div>
+  <div class="brand-name">CUZY CREWZ</div>
+  <div class="brand-sub">دليل مقاسات رسمي — Size Guide</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showPanel('tshirt', this)">👕 تيشيرت</div>
+  <div class="tab" onclick="showPanel('hoodie', this)">🧥 هودي</div>
+  <div class="tab" onclick="showPanel('pants', this)">👖 بنطلون</div>
+  <div class="tab" onclick="showPanel('measure', this)">📏 كيفية القياس</div>
+</div>
+
+<div id="tshirt" class="panel active">
+  <p class="section-note">جميع المقاسات بالسنتيمتر (CM)</p>
+  <table class="size-table">
+    <thead>
+      <tr>
+        <th>المقياس</th>
+        <th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>الصدر (CM)</td><td>86–89</td><td>90–94</td><td>95–99</td><td>100–104</td><td>105–110</td><td>111–116</td></tr>
+      <tr><td>الخصر (CM)</td><td>76–79</td><td>80–84</td><td>85–89</td><td>90–94</td><td>95–100</td><td>101–106</td></tr>
+      <tr><td>الكتف (CM)</td><td>42</td><td>44</td><td>46</td><td>48</td><td>50</td><td>52</td></tr>
+      <tr><td>طول الجسم (CM)</td><td>68</td><td>70</td><td>72</td><td>74</td><td>76</td><td>78</td></tr>
+      <tr><td>طول الكم (CM)</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>ملاحظة:</strong> إذا كنت بين مقاسين اختر الأكبر للراحة</div>
+</div>
+
+<div id="hoodie" class="panel">
+  <p class="section-note">الهودي مقاسه أوسع نسبياً — جميع المقاسات بالسنتيمتر (CM)</p>
+  <table class="size-table">
+    <thead>
+      <tr>
+        <th>المقياس</th>
+        <th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>الصدر (CM)</td><td>92–95</td><td>96–100</td><td>101–105</td><td>106–110</td><td>111–116</td><td>117–122</td></tr>
+      <tr><td>الخصر (CM)</td><td>82–85</td><td>86–90</td><td>91–95</td><td>96–100</td><td>101–106</td><td>107–112</td></tr>
+      <tr><td>الكتف (CM)</td><td>44</td><td>46</td><td>48</td><td>50</td><td>52</td><td>54</td></tr>
+      <tr><td>طول الجسم (CM)</td><td>66</td><td>68</td><td>70</td><td>72</td><td>74</td><td>76</td></tr>
+      <tr><td>طول الكم (CM)</td><td>64</td><td>66</td><td>67</td><td>68</td><td>69</td><td>70</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>ملاحظة:</strong> الهودي مصمم بفيت أوسع — الأرقام للجسم وليس للملبس</div>
+</div>
+
+<div id="pants" class="panel">
+  <p class="section-note">جميع المقاسات بالسنتيمتر (CM)</p>
+  <table class="size-table">
+    <thead>
+      <tr>
+        <th>المقياس</th>
+        <th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>الخصر (CM)</td><td>72–76</td><td>77–81</td><td>82–86</td><td>87–92</td><td>93–98</td><td>99–104</td></tr>
+      <tr><td>الوركين (CM)</td><td>92–96</td><td>97–101</td><td>102–106</td><td>107–112</td><td>113–118</td><td>119–124</td></tr>
+      <tr><td>طول الداخلي (CM)</td><td>76</td><td>77</td><td>78</td><td>79</td><td>80</td><td>81</td></tr>
+      <tr><td>الطول الكلي (CM)</td><td>100</td><td>102</td><td>104</td><td>106</td><td>108</td><td>110</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>طول الداخلي:</strong> من الفخذ للكاحل &nbsp;•&nbsp; <strong>الطول الكلي:</strong> من الخصر للكاحل</div>
+</div>
+
+<div id="measure" class="panel">
+  <div class="measure-section">
+    <div class="measure-title">⬡ كيف تأخذ مقاساتك بشكل صحيح</div>
+    <div class="measure-item"><div class="dot"></div><span><strong>الصدر:</strong> قِس المحيط الكامل حول أوسع جزء من صدرك تحت الإبط مباشرةً</span></div>
+    <div class="measure-item"><div class="dot"></div><span><strong>الخصر:</strong> قِس المحيط الكامل حول أضيق جزء من خصرك</span></div>
+    <div class="measure-item"><div class="dot"></div><span><strong>الوركين:</strong> قِس المحيط الكامل حول أوسع جزء من وركيك</span></div>
+    <div class="measure-item"><div class="dot"></div><span><strong>الكتف:</strong> قِس من نقطة الكتف الأيمن إلى نقطة الكتف الأيسر</span></div>
+    <div class="measure-item"><div class="dot"></div><span><strong>طول الكم:</strong> من الكتف حتى المعصم مع ثني الكوع قليلاً</span></div>
+    <div class="measure-item"><div class="dot"></div><span><strong>الطول الداخلي:</strong> من الفخذ حتى الكاحل بشكل مستقيم</span></div>
+  </div>
+  <div class="measure-section">
+    <div class="measure-title">✦ نصائح للحصول على أدق قياس</div>
+    <div class="measure-item"><div class="dot"></div><span>استخدم شريط قياس مرن دائماً</span></div>
+    <div class="measure-item"><div class="dot"></div><span>قِس فوق الملابس الداخلية فقط، وليس فوق الملابس الثقيلة</span></div>
+    <div class="measure-item"><div class="dot"></div><span>الشريط يجب أن يكون أفقياً وغير مشدود ولا مرتخي</span></div>
+    <div class="measure-item"><div class="dot"></div><span>إذا كنت بين مقاسين، اختر الأكبر للراحة</span></div>
+  </div>
+  <div class="note"><strong>للاستفسار:</strong> تواصل معنا على صفحة Cuzy Crewz الرسمية</div>
+</div>
+
+<script>
+function showPanel(id, tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  tab.classList.add('active');
+}
+</script>
