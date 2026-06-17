@@ -7,8 +7,8 @@ const PRODUCTS = [
   { id:4, name:'Tribal Sweatpants ', type:'T-SHIRT · RELAXED FIT', cat:'T-Shirts', price:279, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['XS','S','M','L','XL','XXL'] },
   { id:5, name:'Red Line Sweatpants ', type:'SWEATPANTS · SOFT FLEECE', cat:'Pants', price:369, badge:'', image:'1S (3).png', bg:'linear-gradient(135deg,#1a0a0e,#0d0508)', colors:['#0d0508','#8B0032'], sizes:['S','M','L','XL','XXL'] },
   { id:6, name:'white Line Sweatpants ', type:'SWEATPANTS · GRAPHIC', cat:'Pants', price:429, badge:'', image:'1S (1).png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508','#F5F0EB'], sizes:['S','M','L','XL','XXL'] },
-  { id:6, name:'egypt national teem red ', type:'SWEATPANTS · GRAPHIC', cat:'Pants', price:299, badge:'', image:'Cuzy Crewz/red eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#ff0000'], sizes:['S','M','L','XL','XXL'] },
-  { id:6, name:'egypt national teem dark ', type:'SWEATPANTS · GRAPHIC', cat:'Pants', price:299, badge:'', image:'Cuzy Crewz/dark eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
+  { id:7, name:'egypt national teem red ', type:' T-SHIRT· GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'red eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#ff0000'], sizes:['S','M','L','XL','XXL'] },
+  { id:8, name:'egypt national teem dark ', type:'T-SHIRT · GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'dark eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
 ]
 
 let cart = [];
