@@ -3,12 +3,12 @@ emailjs.init('kJWiZCSiI3wWZxQdF');
 const PRODUCTS = [
   { id:1, name:'Black TS ', type:'T-SHIRT · OVERSIZED', cat:'T-Shirts', price:299, badge:'NEW', image:'1S (2).png', bg:'linear-gradient(135deg,#1a0a0e,#2d0f15)', colors:['#0d0508','#F5F0EB','#8B0032'], sizes:['XS','S','M','L','XL','XXL'] },
   { id:2, name:'White TS ', type:'T-SHIRT · COMFORT FIT', cat:'T-Shirts', price:329, badge:'BESTSELLER', image:'1S (4).png', bg:'linear-gradient(135deg,#1a0a0e,#2d0f15)', colors:['#fff09e'], sizes:['S','M','L','XL','XXL'] },
-  { id:3, name:'capishow TS ', type:'SWEATPANTS · WIDE LEG', cat:'Pants', price:399, badge:'HOT', image:'1S (6).png', bg:'linear-gradient(135deg,#120608,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
-  { id:4, name:'Tribal Sweatpants ', type:'T-SHIRT · RELAXED FIT', cat:'T-Shirts', price:279, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['XS','S','M','L','XL','XXL'] },
-  { id:5, name:'Red Line Sweatpants ', type:'SWEATPANTS · SOFT FLEECE', cat:'Pants', price:369, badge:'', image:'1S (3).png', bg:'linear-gradient(135deg,#1a0a0e,#0d0508)', colors:['#0d0508','#8B0032'], sizes:['S','M','L','XL','XXL'] },
-  { id:6, name:'white Line Sweatpants ', type:'SWEATPANTS · GRAPHIC', cat:'Pants', price:429, badge:'', image:'1S (1).png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508','#F5F0EB'], sizes:['S','M','L','XL','XXL'] },
-  { id:7, name:'egypt national teem red ', type:' T-SHIRT· GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'red eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#ff0000'], sizes:['S','M','L','XL','XXL'] },
-  { id:8, name:'egypt national teem dark ', type:'T-SHIRT · GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'dark eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
+  { id:3, name:'capishow TS ', type:'T-SHIRT · BOX FIT', cat:'T-Shirts', price:399, badge:'HOT', image:'1S (6).png', bg:'linear-gradient(135deg,#120608,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
+  { id:8, name:'Tribal Sweatpants ', type:'SWEATPANTS  · RELAXED FIT', cat:'SWEATPANTS', price:279, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['XS','S','M','L','XL','XXL'] },
+  { id:6, name:'Red Line Sweatpants ', type:'SWEATPANTS · SOFT FLEECE', cat:'SWEATPANTS', price:369, badge:'', image:'1S (3).png', bg:'linear-gradient(135deg,#1a0a0e,#0d0508)', colors:['#0d0508','#8B0032'], sizes:['S','M','L','XL','XXL'] },
+  { id:7, name:'white Line Sweatpants ', type:'SWEATPANTS · GRAPHIC', cat:'SWEATPANTS', price:429, badge:'', image:'1S (1).png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508','#F5F0EB'], sizes:['S','M','L','XL','XXL'] },
+  { id:5, name:'egypt national teem red ', type:' T-SHIRT· GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'red eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#ff0000'], sizes:['S','M','L','XL','XXL'] },
+  { id:4, name:'egypt national teem dark ', type:'T-SHIRT · GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'dark eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
 ]
 
 let cart = [];
