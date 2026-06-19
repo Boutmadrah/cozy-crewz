@@ -153,3 +153,22 @@ renderProducts();
 updateCartUI();
 document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); } }); });
 document.getElementById('orderModal').addEventListener('click', function(e) { if (e.target === this) closeOrderModal(); });
+function subscribeNewsletter() {
+    const emailInput = document.getElementById('newsletterEmail');
+    const msgDiv = document.getElementById('newsletterMsg');
+    const email = emailInput.value.trim();
+
+    // التأكد إن الإيميل مش فاضي وبيحتوي على علامة @
+    if (email === "" || !email.includes('@')) {
+        msgDiv.style.color = "#ff4d4d"; // لون أحمر للخطأ
+        msgDiv.innerText = "برجاء إدخال بريد إلكتروني صحيح.";
+        return;
+    }
+
+    // هنا بتظهر رسالة النجاح في الـ div اللي أنت مجهزه تحت الفورم
+    msgDiv.style.color = "#2ecc71"; // لون أخضر للنجاح
+    msgDiv.innerText = "تم الاشتراك بنجاح! تابع إيميلك لتصلك أقوى العروض.";
+    
+    // تفريغ خانة الإيميل بعد الاشتراك
+    emailInput.value = "";
+}
