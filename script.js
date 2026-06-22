@@ -4,9 +4,9 @@ const PRODUCTS = [
   { id:1, name:'Black TS ', type:'T-SHIRT · OVERSIZED', cat:'T-Shirts', price:299, badge:'NEW', image:'1S (2).png', bg:'linear-gradient(135deg,#1a0a0e,#2d0f15)', colors:['#0d0508','#F5F0EB','#8B0032'], sizes:['XS','S','M','L','XL','XXL'] },
   { id:2, name:'White TS ', type:'T-SHIRT · COMFORT FIT', cat:'T-Shirts', price:329, badge:'BESTSELLER', image:'1S (4).png', bg:'linear-gradient(135deg,#1a0a0e,#2d0f15)', colors:['#fff09e'], sizes:['S','M','L','XL','XXL'] },
   { id:3, name:'capishow TS ', type:'T-SHIRT · BOX FIT', cat:'T-Shirts', price:399, badge:'HOT', image:'1S (6).png', bg:'linear-gradient(135deg,#120608,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
-  { id:8, name:'Tribal Sweatpants ', type:'SWEATPANTS  · RELAXED FIT', cat:'SWEATPANTS', price:279, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['XS','S','M','L','XL','XXL'] },
-  { id:6, name:'Red Line Sweatpants ', type:'SWEATPANTS · SOFT FLEECE', cat:'SWEATPANTS', price:369, badge:'', image:'1S (3).png', bg:'linear-gradient(135deg,#1a0a0e,#0d0508)', colors:['#0d0508','#8B0032'], sizes:['S','M','L','XL','XXL'] },
-  { id:7, name:'white Line Sweatpants ', type:'SWEATPANTS · GRAPHIC', cat:'SWEATPANTS', price:429, badge:'', image:'1S (1).png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508','#F5F0EB'], sizes:['S','M','L','XL','XXL'] },
+  { id:8, name:'Tribal Sweatpants ', type:'SWEATPANTS  · RELAXED FIT', cat:'SWEATPANTS', price:349, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['XS','S','M','L','XL','XXL'] },
+  { id:6, name:'Red Line Sweatpants ', type:'SWEATPANTS · SOFT FLEECE', cat:'SWEATPANTS', price:449, badge:'', image:'1S (3).png', bg:'linear-gradient(135deg,#1a0a0e,#0d0508)', colors:['#0d0508','#8B0032'], sizes:['S','M','L','XL','XXL'] },
+  { id:7, name:'white Line Sweatpants ', type:'SWEATPANTS · GRAPHIC', cat:'SWEATPANTS', price:519, badge:'', image:'1S (1).png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508','#F5F0EB'], sizes:['S','M','L','XL','XXL'] },
   { id:5, name:'egypt national teem red ', type:' T-SHIRT· GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'red eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#ff0000'], sizes:['S','M','L','XL','XXL'] },
   { id:4, name:'egypt national teem dark ', type:'T-SHIRT · GRAPHIC', cat:'T-Shirts', price:299, badge:'', image:'dark eg.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['S','M','L','XL','XXL'] },
 ]
@@ -135,6 +135,30 @@ function submitOrder() {
   updateCartUI();
 }
 
+function submitDesignRequest(event) {
+  event.preventDefault();
+  const name = document.getElementById('designName').value.trim();
+  const phone = document.getElementById('designPhone').value.trim();
+  const email = document.getElementById('designEmail').value.trim();
+  const service = document.getElementById('designService').value;
+  const description = document.getElementById('designDescription').value.trim();
+
+  if (!name || !phone || !email || !service || !description) {
+    alert('من فضلك اكمل جميع البيانات المطلوبة.');
+    return;
+  }
+
+  const message = `👋 مرحباً فريق Cuzy Crewz\n\n` +
+    `👤 الاسم: ${name}\n` +
+    `📱 رقم الموبايل: ${phone}\n` +
+    `✉️ البريد الإلكتروني: ${email}\n` +
+    `🎯 نوع الخدمة: ${service}\n` +
+    `📝 تفاصيل المشروع: ${description}`;
+
+  const waUrl = `https://wa.me/201145589480?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+}
+
 function subscribeNewsletter() {
   const emailInput = document.getElementById('newsletterEmail');
   const btn = document.getElementById('newsletterBtn');
@@ -148,6 +172,8 @@ function subscribeNewsletter() {
   .then(() => { msg.style.color = '#4ade80'; msg.textContent = '✅ تم الاشتراك بنجاح! هنبعتلك أحدث العروض.'; emailInput.value = ''; btn.textContent = '✓ تم'; btn.style.background = '#4ade80'; btn.style.color = '#0d0508'; })
   .catch((err) => { console.error('EmailJS error:', err); msg.style.color = '#ff6b6b'; msg.textContent = '❌ حصل خطأ، حاول تاني بعد شوية.'; btn.disabled = false; btn.textContent = 'اشترك'; });
 }
+
+document.getElementById('designRequestForm').addEventListener('submit', submitDesignRequest);
 
 renderProducts();
 updateCartUI();

@@ -1024,6 +1024,160 @@ section {
   max-width: 380px;
 }
 
+/* DESIGN SERVICES */
+#design-services {
+  background: rgba(255,255,255,0.03);
+  position: relative;
+}
+#design-services .section-heading {
+  max-width: 760px;
+  margin-bottom: 3rem;
+}
+.design-services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(196,30,58,0.55);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+.service-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(196,30,58,0.12);
+  color: var(--bright-red);
+  font-size: 2rem;
+}
+.service-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem;
+  color: var(--cream);
+}
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  flex: 1;
+}
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--cream);
+  padding: 0.85rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: var(--crimson);
+  border-color: var(--crimson);
+  color: var(--cream);
+}
+.design-pricing-contact {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+}
+.pricing-panel,
+.contact-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+.pricing-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  margin-bottom: 1.5rem;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.pricing-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.pricing-card.featured {
+  background: linear-gradient(180deg, rgba(196,30,58,0.16), rgba(27,11,14,0.95));
+  border-color: rgba(196,30,58,0.55);
+}
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--bright-red);
+}
+.pricing-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+.pricing-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--cream);
+}
+.pricing-price span {
+  font-size: 1rem;
+  color: var(--muted);
+}
+.pricing-card ul {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.95rem;
+}
+.pricing-card ul li::before {
+  content: '•';
+  color: var(--bright-red);
+  display: inline-block;
+  width: 1rem;
+}
+.design-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.design-form .btn-primary {
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
 /* STORY */
 #story {
   position: relative;
@@ -1372,6 +1526,8 @@ footer {
   .story-grid { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .design-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .design-pricing-contact { grid-template-columns: 1fr; }
 }
 @media(max-width: 600px) {
   .nav-links { display: none; }
@@ -1381,5 +1537,8 @@ footer {
   .newsletter-form { flex-direction: column; }
   .filter-tabs { flex-wrap: wrap; }
   .form-row { grid-template-columns: 1fr; }
+  .design-services-grid { grid-template-columns: 1fr; }
+  .design-pricing-contact { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
   .cart-sidebar { width: 100vw; }
 }
