@@ -6,7 +6,7 @@ const PRODUCTS = [
   { id:2, name:'Gojo saturo', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
   { id:3, name:'Toji', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h3.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
   { id:4, name:'Skona', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h4.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
-  { id:5, name:'Chamber', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'CHAMBER.Png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
+  { id:5, name:'Chamber', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'CHAMBER.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
    { id:5, name:'Berserk', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'Berserk.jpeg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
   { id:13, name:'wide leg White', type:'PANTS · relaxed', cat:'Pants', price:599, badge:'New+offer', image:'g1.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#fffafc'], sizes:['32','34','36','38'] },
   { id:13, name:'wide leg dark', type:'PANTS · relaxed', cat:'Pants', price:599, badge:'New+offer', image:'g2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#050505'], sizes:['32','34','36','38'] },
