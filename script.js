@@ -2,12 +2,12 @@ emailjs.init('kJWiZCSiI3wWZxQdF');
 
 const PRODUCTS = [
   
-  { id:1, name:'spider man', type:'hoodie · dtf', cat:'hode', price:499, badge:'New Winter', image:'h1.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
-  { id:2, name:'Gojo saturo', type:'hoodie · dtf', cat:'hode', price:499, badge:'New Winter', image:'h2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
-  { id:3, name:'Toji', type:'hoodie · dtf', cat:'hode', price:699, badge:'New Winter', image:'h3.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
-  { id:4, name:'Skona', type:'hoodie · dtf', cat:'hode', price:699, badge:'New Winter', image:'h4.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
-  { id:13, name:'wide leg', type:'bantalon · relaxed', cat:'ginz', price:599, badge:'New+offer', image:'g1.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#fffafc'], sizes:['32','34','36','38'] },
-  { id:13, name:'wide leg', type:'bantalon · relaxed', cat:'ginz', price:599, badge:'New+offer', image:'g2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#050505'], sizes:['32','34','36','38'] },
+  { id:1, name:'spider man', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h1.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
+  { id:2, name:'Gojo saturo', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
+  { id:3, name:'Toji', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h3.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
+  { id:4, name:'Skona', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h4.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
+  { id:13, name:'wide leg White', type:'PANTS · relaxed', cat:'Pants', price:599, badge:'New+offer', image:'g1.png', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#fffafc'], sizes:['32','34','36','38'] },
+  { id:13, name:'wide leg dark', type:'PANTS · relaxed', cat:'Pants', price:599, badge:'New+offer', image:'g2.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#050505'], sizes:['32','34','36','38'] },
   { id:10, name:'White TS ', type:'T-SHIRT · COMFORT FIT', cat:'T-Shirts', price:329, badge:'', image:'1S (4).png', bg:'linear-gradient(135deg,#1a0a0e,#2d0f15)', colors:['#fff09e'], sizes:['M','L','XL','XXL'] },
   { id:11, name:'capishow TS ', type:'T-SHIRT · BOX FIT', cat:'T-Shirts', price:399, badge:'', image:'1S (6).png', bg:'linear-gradient(135deg,#120608,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
   { id:8, name:'Tribal Sweatpants ', type:'SWEATPANTS  · RELAXED FIT', cat:'SWEATPANTS', price:349, badge:'', image:'1S (5).png', bg:'linear-gradient(135deg,#0d0508,#250d12)', colors:['#F5F0EB'], sizes:['M','L','XL','XXL'] },
