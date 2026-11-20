@@ -1,0 +1,17 @@
+ربط طلبات Cuzy Crewz بـ Google Sheets
+
+1. أنشئ Google Sheet جديدًا، ثم انسخ المعرّف من الرابط:
+   https://docs.google.com/spreadsheets/d/SHEET_ID/edit
+2. افتح https://script.google.com وأنشئ مشروعًا جديدًا.
+3. انسخ محتوى google-sheets-orders.gs إلى ملف Code.gs في المشروع.
+4. استبدل PASTE_YOUR_GOOGLE_SHEET_ID_HERE في Code.gs بمعرّف Google Sheet.
+5. من Deploy اختر New deployment، ثم النوع Web app.
+   - Execute as: Me
+   - Who has access: Anyone
+   وافق على الصلاحيات المطلوبة ثم اضغط Deploy.
+6. انسخ Web app URL الناتج، واستبدل
+   PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE في script.js به.
+7. ارفع/انشر الملفات المعدلة على موقعك. ستظهر الطلبات في تبويب Orders.
+
+لا تضع كلمة مرور أو مفتاحًا سريًا في ملفات الموقع. رابط Web app مخصص لاستقبال
+الطلبات فقط؛ اترك صلاحيات Google Sheet نفسها خاصة بك.

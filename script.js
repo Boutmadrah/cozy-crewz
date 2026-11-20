@@ -1,5 +1,7 @@
 emailjs.init('kJWiZCSiI3wWZxQdF');
 
+const GOOGLE_SHEETS_WEB_APP_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
 const PRODUCTS = [
   
   { id:1, name:'spider man', type:'HOODIES · dtf', cat:'Hoodies', price:499, badge:'New Winter', image:'h1.jpg', bg:'linear-gradient(135deg,#250d12,#1a0a0e)', colors:['#0d0508'], sizes:['M','L','XL','XXL'] },
@@ -131,18 +133,53 @@ function openOrderModal() {
 }
 function closeOrderModal() { document.getElementById('orderModal').classList.remove('open'); }
 
-function submitOrder() {
+async function submitOrder() {
   const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
   const gov = document.getElementById('custGov').value;
   const address = document.getElementById('custAddress').value.trim();
   const notes = document.getElementById('custNotes').value.trim();
   if (!name || !phone || !gov || !address) { alert('من فضلك اكمل جميع البيانات المطلوبة (*)'); return; }
+  if (GOOGLE_SHEETS_WEB_APP_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+    alert('قبل استقبال الطلبات، اربط الموقع بـ Google Sheets حسب ملف google-sheets-setup.txt.');
+    return;
+  }
+
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   const itemsText = cart.map(i => `• ${i.name} - مقاس ${i.size} × ${i.qty} = ${i.price * i.qty} EGP`).join('\n');
   const msg = `🛒 *طلب جديد - Cuzy Crewz*\n\n` + `👤 *الاسم:* ${name}\n📞 *الموبايل:* ${phone}\n🏙️ *المحافظة:* ${gov}\n📍 *العنوان:* ${address}\n\n` + `*المنتجات:*\n${itemsText}\n\n` + `💰 *الإجمالي:* ${total} EGP\n` + (notes ? `📝 *ملاحظات:* ${notes}` : '');
   const waUrl = `https://wa.me/201145589480?text=${encodeURIComponent(msg)}`;
-  window.open(waUrl, '_blank');
+  const whatsappWindow = window.open('about:blank', '_blank');
+  const submitButton = document.querySelector('.whatsapp-btn');
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = '⏳ جاري حفظ الطلب...';
+
+  const order = {
+    orderId: `CC-${Date.now()}`,
+    customer: { name, phone, governorate: gov, address, notes },
+    items: cart.map(({ id, name, size, price, qty }) => ({ id, name, size, price, quantity: qty })),
+    total
+  };
+
+  try {
+    await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(order)
+    });
+  } catch (error) {
+    console.error('Google Sheets order submission failed:', error);
+    alert('ماقدرناش نحفظ الطلب في Google Sheets. حاول تاني بعد التأكد من الاتصال.');
+    if (whatsappWindow) whatsappWindow.close();
+    return;
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+
+  if (whatsappWindow) whatsappWindow.location.href = waUrl;
   document.getElementById('modalBody').style.display = 'none';
   document.getElementById('successScreen').classList.add('show');
   cart = [];
