@@ -148,7 +148,7 @@ async function submitOrder() {
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   const itemsText = cart.map(i => `• ${i.name} - مقاس ${i.size} × ${i.qty} = ${i.price * i.qty} EGP`).join('\n');
   const msg = `🛒 *طلب جديد - Cuzy Crewz*\n\n` + `👤 *الاسم:* ${name}\n📞 *الموبايل:* ${phone}\n🏙️ *المحافظة:* ${gov}\n📍 *العنوان:* ${address}\n\n` + `*المنتجات:*\n${itemsText}\n\n` + `💰 *الإجمالي:* ${total} EGP\n` + (notes ? `📝 *ملاحظات:* ${notes}` : '');
-  const waUrl = `https://wa.me/201145589480?text=${encodeURIComponent(msg)}`;
+  const waUrl = `https://wa.me/201133284656?text=${encodeURIComponent(msg)}`;
   const whatsappWindow = window.open('about:blank', '_blank');
   const submitButton = document.querySelector('.whatsapp-btn');
   const originalButtonText = submitButton.textContent;
@@ -206,7 +206,7 @@ function submitDesignRequest(event) {
     `🎯 نوع الخدمة: ${service}\n` +
     `📝 تفاصيل المشروع: ${description}`;
 
-  const waUrl = `https://wa.me/201145589480?text=${encodeURIComponent(message)}`;
+  const waUrl = `https://wa.me/201133284656?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
 }
 
